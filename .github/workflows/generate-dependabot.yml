@@ -9,18 +9,16 @@
         runs-on: ubuntu-latest
         steps:
 
-          - uses: actions/checkout@v3
+          - name: Checkout Codebase
+            uses: actions/checkout@v3
 
           - name: Generate Dependabot Glob
             uses: Makeshift/generate-dependabot-glob-action@v1.2.1
 
-          - name: Commit and push changes to current branch
-            run: |
-              git config user.name = ${{ github.event.pusher.name }}"
-              git config user.email = ${{ github.event.pusher.email }}"
-              git add .
-              git commit -am "chore: Updated dependabot config"
-              git push
+          - name: Add and Commit
+            uses: EndBug/add-and-commit@v9.1.2
+            with:
+              add: '.github/dependabot.yml'
 
           # - name: Create Pull Request
           #   id: cpr
