@@ -14,6 +14,12 @@
           - name: Generate Dependabot Glob
             uses: Makeshift/generate-dependabot-glob-action@v1.2.1
 
+          - name: Commit and push changes to current branch
+            run: |
+              git add .
+              git commit -am "chore: Updated dependabot config"
+              git push
+
           # - name: Create Pull Request
           #   id: cpr
           #   uses: peter-evans/create-pull-request@v5
