@@ -16,6 +16,8 @@
 
           - name: Commit and push changes to current branch
             run: |
+              git config user.name = ${{ github.event.pusher.name }}"
+              git config user.email = ${{ github.event.pusher.email }}"
               git add .
               git commit -am "chore: Updated dependabot config"
               git push
