@@ -15,7 +15,7 @@
           - name: Generate Dependabot Glob
             uses: Makeshift/generate-dependabot-glob-action@v1.2.1
             with:
-              template-file: 'danny-molnar/blastarcade/.github/dependabot.template.yml'
+              template-file: 'danny-molnar/blastarcade/.github/dependabot.template.yml@depnbot-conf-gen'
 
 
           - name: Add and Commit
