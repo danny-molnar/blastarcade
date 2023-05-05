@@ -14,6 +14,9 @@
 
           - name: Generate Dependabot Glob
             uses: Makeshift/generate-dependabot-glob-action@v1.2.1
+            with:
+              template-file: '.github/dependabot.template.yml'
+
 
           - name: Add and Commit
             uses: EndBug/add-and-commit@v9.1.2
