@@ -6,6 +6,9 @@ on:
 
 env:
   TEMPLATE_FILE_NAME: 'dependabot.template.yml'
+  TEMPLATE_FILE_CONTENTS: |
+    This is a long string
+      Many lines bla bla bla
 
 jobs:
   generate-dependabot:
@@ -21,19 +24,18 @@ jobs:
         with:
           files: '.github/dependabot-template.yml'
 
+      - name: Create Template File
+        if: steps.check_files.outputs.files_exists == 'false'
+        uses: finnp/create-file-action@1.0.0
+        env:
+          FILE_NAME: $TEMPLATE_FILE_NAME
+          FILE_DATA: $TEMPLATE_FILE_CONTENTS
+
       - name: Generate Dependabot Glob
-        if: steps.check_files.outputs.files_exists == 'true'
         uses: Makeshift/generate-dependabot-glob-action@v1.2.1
 
       - name: Add and Commit
-        if: steps.check_files.outputs.files_exists == 'true'
         uses: EndBug/add-and-commit@v9.1.2
         with:
           add: '.github/dependabot.yml'
           default_author: github_actions
-
-      - name: Alert User
-        if: steps.check_files.outputs.files_exists == 'false'
-        run: |
-          echo "Template file .github/dependabot-template.yml does not exist!"
-          echo $TEMPLATE_FILE_NAME
