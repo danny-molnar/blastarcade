@@ -12,11 +12,23 @@ jobs:
       - name: Checkout Codebase
         uses: actions/checkout@v3
 
+      - name: Check if Template Exists
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: '.github/dependabot.template.yml'
+
       - name: Generate Dependabot Glob
+        if: steps.check_files.outputs.files_exists == 'true'
         uses: Makeshift/generate-dependabot-glob-action@v1.2.1
 
       - name: Add and Commit
+        if: steps.check_files.outputs.files_exists == 'true'
         uses: EndBug/add-and-commit@v9.1.2
         with:
           add: '.github/dependabot.yml'
           default_author: github_actions
+
+      - name: Alert User
+        if: steps.check_files.outputs.files_exists == 'false'
+        run: echo "Template file .github/dependabot.template.yml does not exist!"
