@@ -4,6 +4,9 @@ name: Generate dependabot.yml
 on:
   workflow_call:
 
+env:
+  TEMPLATE_FILE_NAME: dependabot.template
+
 jobs:
   generate-dependabot:
     runs-on: ubuntu-latest
@@ -31,4 +34,6 @@ jobs:
 
       - name: Alert User
         if: steps.check_files.outputs.files_exists == 'false'
-        run: echo "Template file .github/dependabot-template.yml does not exist!"
+        run: |
+          echo "Template file .github/dependabot-template.yml does not exist!"
+          echo $TEMPLATE_FILE_NAME
