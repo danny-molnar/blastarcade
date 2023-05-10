@@ -5,7 +5,7 @@ on:
   workflow_call:
 
 env:
-  TEMPLATE_FILE_NAME: dependabot.template
+  TEMPLATE_FILE_NAME: 'dependabot.template.yml'
 
 jobs:
   generate-dependabot:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Codebase
         uses: actions/checkout@v3
 
-      - name: Check if Template Exists
+      - name: Check if Template File Exists
         id: check_files
         uses: andstor/file-existence-action@v1
         with:
