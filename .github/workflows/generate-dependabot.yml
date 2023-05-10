@@ -25,8 +25,8 @@ jobs:
           files: '.github/dependabot.template.yml'
 
       - name: Create Template File
+        uses: 'finnp/create-file-action@master'
         if: steps.check_files.outputs.files_exists == 'false'
-        uses: finnp/create-file-action@1.0.0
         env:
           FILE_NAME: $TEMPLATE_FILE_NAME
           FILE_DATA: $TEMPLATE_FILE_CONTENTS
