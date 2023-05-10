@@ -28,8 +28,8 @@ jobs:
         uses: 'finnp/create-file-action@master'
         if: steps.check_files.outputs.files_exists == 'false'
         env:
-          FILE_NAME: $TEMPLATE_FILE_NAME
-          FILE_DATA: $TEMPLATE_FILE_CONTENTS
+          FILE_NAME: "$TEMPLATE_FILE_NAME"
+          FILE_DATA: "$TEMPLATE_FILE_CONTENTS"
 
       - name: Testing
         run: |
