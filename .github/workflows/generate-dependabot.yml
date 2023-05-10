@@ -31,6 +31,11 @@ jobs:
           FILE_NAME: $TEMPLATE_FILE_NAME
           FILE_DATA: $TEMPLATE_FILE_CONTENTS
 
+      - name: Testing
+        run: |
+          ls
+          ls -la
+
       - name: Generate Dependabot Glob
         uses: Makeshift/generate-dependabot-glob-action@v1.2.1
 
