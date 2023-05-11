@@ -1,0 +1,23 @@
+---
+    name: Autoclose Dependabot PRs
+
+    on:
+      workflow_call:
+
+    jobs:
+      autoclose-pr:
+        if: ${{ github.actor == 'dependabot' }}
+        runs-on: ubuntu-latest
+        steps:
+
+          - name: Checkout Codebase
+            uses: actions/checkout@v3
+
+          - name: Test
+            run: echo ${{ github.event }}
+
+        #   - name: Close Pull
+        #     uses: peter-evans/close-pull@v3
+        #     with:
+        #       comment: Auto-closing pull request
+        #       delete-branch: true

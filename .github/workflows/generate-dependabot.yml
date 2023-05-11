@@ -4,11 +4,11 @@ name: Generate dependabot.yml
 on:
   workflow_call:
 
-env:
-  TEMPLATE_FILE_NAME: 'dependabot.template.yml'
-  TEMPLATE_FILE_CONTENTS: |
-    This is a long string
-      Many lines bla bla bla
+# env:
+#   TEMPLATE_FILE_NAME: 'dependabot.template.yml'
+#   TEMPLATE_FILE_CONTENTS: |
+#     This is a long string
+#       Many lines bla bla bla
 
 jobs:
   generate-dependabot:
@@ -18,23 +18,23 @@ jobs:
       - name: Checkout Codebase
         uses: actions/checkout@v3
 
-      - name: Check if Template File Exists
-        id: check_files
-        uses: andstor/file-existence-action@v1
-        with:
-          files: '.github/dependabot.template.yml'
+      # - name: Check if Template File Exists
+      #   id: check_files
+      #   uses: andstor/file-existence-action@v1
+      #   with:
+      #     files: '.github/dependabot.template.yml'
 
-      - name: Create Template File
-        uses: 'finnp/create-file-action@master'
-        if: steps.check_files.outputs.files_exists == 'false'
-        env:
-          FILE_NAME: '.github/dependabot.template.yml'
-          FILE_DATA: 'this text goes into the file'
+      # - name: Create Template File
+      #   uses: 'finnp/create-file-action@master'
+      #   if: steps.check_files.outputs.files_exists == 'false'
+      #   env:
+      #     FILE_NAME: '.github/dependabot.template.yml'
+      #     FILE_DATA: 'this text goes into the file'
 
-      - name: Testing
-        run: |
-          ls -laR
-          cat .github/dependabot.template.yml
+      # - name: Testing
+      #   run: |
+      #     ls -laR
+      #     cat .github/dependabot.template.yml
 
       - name: Generate Dependabot Glob
         uses: Makeshift/generate-dependabot-glob-action@v1.2.1
