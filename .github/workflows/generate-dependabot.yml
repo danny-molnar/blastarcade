@@ -33,8 +33,8 @@ jobs:
 
       - name: Testing
         run: |
-          ls
-          echo .github/dependabot.template.yml
+          ls -laR
+          cat .github/dependabot.template.yml
 
       - name: Generate Dependabot Glob
         uses: Makeshift/generate-dependabot-glob-action@v1.2.1
