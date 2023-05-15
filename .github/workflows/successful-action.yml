@@ -16,7 +16,11 @@ jobs:
         id: sleep
         run: sleep 30s
 
-      - name: Print 2nd text
-        id: print-2
-        run: echo "Second text printed"
+      - name: Print sleep text
+        id: print-sleep
+        run: echo "Sleep text printed"
         if: steps.sleep.outcome == 'success'
+
+      - name: Print nonsleep text
+        id: print-nonsleep
+        run: echo "Nonsleep text printed"
