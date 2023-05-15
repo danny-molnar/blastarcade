@@ -9,4 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print 1st text
+        id: print-1
         run: echo "First text printed"
+
+      - name: Sleep 30s
+        id: sleep
+        run: sleep 30s
+
+      - name: Print 2nd text
+        id: print-2
+        run: echo "Second text printed"
+        if: steps.sleep.outcome == 'success'
