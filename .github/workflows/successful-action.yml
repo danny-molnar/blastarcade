@@ -18,15 +18,15 @@ jobs:
         id: sleep
         run: sleep 30s
 
+      - name: Print nonsleep text
+        id: print-nonsleep
+        run: |
+          echo "Nonsleep text printed"
+          date "+%T"
+
       - name: Print sleep text
         id: print-sleep
         run: |
           echo "Sleep text printed"
           date "+%T"
         if: steps.sleep.outcome == 'success'
-
-      - name: Print nonsleep text
-        id: print-nonsleep
-        run: |
-          echo "Nonsleep text printed"
-          date "+%T"
