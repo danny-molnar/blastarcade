@@ -1,0 +1,12 @@
+---
+name: Successful Action steps test
+
+on:
+  workflow_call:
+
+jobs:
+  autoclose-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print 1st text
+        run: echo "First text printed"
