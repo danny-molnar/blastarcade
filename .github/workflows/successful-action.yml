@@ -5,7 +5,7 @@ on:
   workflow_call:
 
 jobs:
-  autoclose-pr:
+  test-step-sequence-logic:
     runs-on: ubuntu-latest
     steps:
       - name: Print 1st text
