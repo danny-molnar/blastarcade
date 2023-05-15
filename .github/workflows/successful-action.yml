@@ -10,7 +10,9 @@ jobs:
     steps:
       - name: Print 1st text
         id: print-1
-        run: echo "First text printed"
+        run: |
+          echo "First text printed"
+          date "+%T"
 
       - name: Sleep 30s
         id: sleep
@@ -18,9 +20,13 @@ jobs:
 
       - name: Print sleep text
         id: print-sleep
-        run: echo "Sleep text printed"
+        run: |
+          echo "Sleep text printed"
+          date "+%T"
         if: steps.sleep.outcome == 'success'
 
       - name: Print nonsleep text
         id: print-nonsleep
-        run: echo "Nonsleep text printed"
+        run: |
+          echo "Nonsleep text printed"
+          date "+%T"
