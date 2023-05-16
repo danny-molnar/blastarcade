@@ -25,32 +25,12 @@ jobs:
 
       - name: Create Template File
         if: steps.check_files.outputs.files_exists == 'false'
-        run: |
-          echo '---' >> .github/dependabot.template.yml
-          yq '"version": 2,
-          "updates": [
-              {
-                  "package-ecosystem": "'terraform'",
-                  "directory": "'\/**\/*'",
-                  "schedule": {
-                      "interval": "'daily'"
-                  }
-              },
-              {
-                  "package-ecosystem": "'gomod'",
-                  "directory": "'\/test\/**\/*'",
-                  "schedule": {
-                      "interval": "'daily'"
-                  }
-              },
-              {
-                  "package-ecosystem": "'github-actions'",
-                  "directory": "'\/.github\/**\/*'",
-                  "schedule": {
-                      "interval": "'daily'"
-                  }
-              }
-          ]' -oy >> .github/dependabot.template.yml
+        uses: DamianReeves/write-file-action@v1.2
+        with:
+          path: .github/dependabot.template.yml
+          contents: |
+            ---
+            version: 2
 
       - name: Testing
         run: cat .github/dependabot.template.yml
