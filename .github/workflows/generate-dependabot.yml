@@ -28,7 +28,7 @@ jobs:
         if: steps.check_files.outputs.files_exists == 'false'
         env:
           FILE_NAME: '.github/dependabot.template.yml'
-          FILE_DATA: >-
+          FILE_DATA: >
             Several lines of text,\n
             with some "quotes" of various 'types',\n
             and also a blank line:\n
