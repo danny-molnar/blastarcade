@@ -29,23 +29,24 @@ jobs:
         env:
           FILE_NAME: '.github/dependabot.template.yml'
           FILE_DATA: >
-            ----
-            version: 2
-            updates:
-              - package-ecosystem: 'terraform'
-                directory: '/**/*'
-                schedule:
-                  interval: 'daily'
-
-              - package-ecosystem: 'gomod'
-                directory: '/test/**/*'
-                schedule:
-                  interval: 'daily'
-
-              - package-ecosystem: 'github-actions'
-                directory: '/.github/**/*'
-                schedule:
-                  interval: 'daily'
+            ----\n
+            version: 2\n
+            updates:\n
+              - package-ecosystem: 'terraform'\n
+                directory: '/**/*'\n
+                schedule:\n
+                  interval: 'daily'\n
+                  \n
+              - package-ecosystem: 'gomod'\n
+                directory: '/test/**/*'\n
+                schedule:\n
+                  interval: 'daily'\n
+                  \n
+              - package-ecosystem: 'github-actions'\n
+                directory: '/.github/**/*'\n
+                schedule:\n
+                  interval: 'daily'\n
+                  \n
 
       - name: Testing
         run: cat .github/dependabot.template.yml
