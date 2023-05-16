@@ -31,6 +31,21 @@ jobs:
           contents: |
             ---
             version: 2
+            updates:
+              - package-ecosystem: 'terraform'
+                directory: '/**/*'
+                schedule:
+                  interval: 'daily'
+
+              - package-ecosystem: 'gomod'
+                directory: '/test/**/*'
+                schedule:
+                  interval: 'daily'
+
+              - package-ecosystem: 'github-actions'
+                directory: '/.github/workflows/**/*'
+                schedule:
+                  interval: 'daily'
 
       - name: Testing
         run: cat .github/dependabot.template.yml
