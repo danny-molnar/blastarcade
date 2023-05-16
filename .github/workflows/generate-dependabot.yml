@@ -27,7 +27,7 @@ jobs:
         if: steps.check_files.outputs.files_exists == 'false'
         run: |
           echo '---' >> .github/dependabot.template.yaml
-          yq "{"version": 2,
+          yq '"version": 2,
           "updates": [
               {
                   "package-ecosystem": "terraform",
@@ -50,7 +50,7 @@ jobs:
                       "interval": "daily"
                   }
               }
-          ]}" -oy >> .github/dependabot.template.yaml
+          ]' -oy >> .github/dependabot.template.yaml
 
       - name: Testing
         run: cat .github/dependabot.template.yml
