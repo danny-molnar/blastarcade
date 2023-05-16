@@ -30,22 +30,22 @@ jobs:
           yq '"version": 2,
           "updates": [
               {
-                  "package-ecosystem": "terraform",
-                  "directory": "/**/*",
+                  "package-ecosystem": "'terraform'",
+                  "directory": "\/**\/*",
                   "schedule": {
                       "interval": "daily"
                   }
               },
               {
-                  "package-ecosystem": "gomod",
-                  "directory": "/test/**/*",
+                  "package-ecosystem": "'gomod'",
+                  "directory": "\/test\/**\/*",
                   "schedule": {
                       "interval": "daily"
                   }
               },
               {
-                  "package-ecosystem": "github-actions",
-                  "directory": "/.github/**/*",
+                  "package-ecosystem": "'github-actions'",
+                  "directory": "\/.github\/**\/*",
                   "schedule": {
                       "interval": "daily"
                   }
