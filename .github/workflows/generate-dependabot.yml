@@ -31,23 +31,23 @@ jobs:
           "updates": [
               {
                   "package-ecosystem": "'terraform'",
-                  "directory": "\/**\/*",
+                  "directory": "'\/**\/*'",
                   "schedule": {
-                      "interval": "daily"
+                      "interval": "'daily'"
                   }
               },
               {
                   "package-ecosystem": "'gomod'",
-                  "directory": "\/test\/**\/*",
+                  "directory": "'\/test\/**\/*'",
                   "schedule": {
-                      "interval": "daily"
+                      "interval": "'daily'"
                   }
               },
               {
                   "package-ecosystem": "'github-actions'",
-                  "directory": "\/.github\/**\/*",
+                  "directory": "'\/.github\/**\/*'",
                   "schedule": {
-                      "interval": "daily"
+                      "interval": "'daily'"
                   }
               }
           ]' -oy >> .github/dependabot.template.yml
