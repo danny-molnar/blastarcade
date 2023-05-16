@@ -32,20 +32,20 @@ jobs:
             ----\n
             version: 2\n
             updates:\n
-              - package-ecosystem: 'terraform'\n
-                directory: '/**/*'\n
+              - package-ecosystem: "terraform"\n
+                directory: "**/*"\n
                 schedule:\n
-                  interval: 'daily'\n
+                  interval: "daily"\n
                   \n
-              - package-ecosystem: 'gomod'\n
-                directory: '/test/**/*'\n
+              - package-ecosystem: "gomod"\n
+                directory: "/test/**/*"\n
                 schedule:\n
-                  interval: 'daily'\n
+                  interval: "daily"\n
                   \n
-              - package-ecosystem: 'github-actions'\n
-                directory: '/.github/**/*'\n
+              - package-ecosystem: "github-actions"\n
+                directory: "/.github/**/*"\n
                 schedule:\n
-                  interval: 'daily'\n
+                  interval: "daily"\n
                   \n
 
       - name: Testing
