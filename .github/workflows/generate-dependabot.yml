@@ -4,10 +4,10 @@ name: Generate dependabot.yml
 on:
   workflow_call:
 
-env:
-  TEMPLATE_FILE_CONTENTS: |
-    This is a long string
-      Many lines bla bla bla
+# env:
+#   TEMPLATE_FILE_CONTENTS: |
+#     This is a long string
+#       Many lines bla bla bla
 
 jobs:
   generate-dependabot:
@@ -28,7 +28,9 @@ jobs:
         if: steps.check_files.outputs.files_exists == 'false'
         env:
           FILE_NAME: '.github/dependabot.template.yml'
-          FILE_DATA: '$env:TEMPLATE_FILE_CONTENTS'
+          FILE_DATA: |
+              This is a long string
+                Many lines bla bla bla
 
       - name: Testing
         run: cat .github/dependabot.template.yml
