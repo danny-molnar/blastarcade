@@ -24,29 +24,33 @@ jobs:
           files: '.github/dependabot.template.yml'
 
       - name: Create Template File
-        uses: 'finnp/create-file-action@master'
         if: steps.check_files.outputs.files_exists == 'false'
-        env:
-          FILE_NAME: '.github/dependabot.template.yml'
-          FILE_DATA: >
-            ----\n
-            version: 2\n
-            updates:\n
-              - package-ecosystem: "terraform"\n
-                directory: "**/*"\n
-                schedule:\n
-                  interval: "daily"\n
-                  \n
-              - package-ecosystem: "gomod"\n
-                directory: "/test/**/*"\n
-                schedule:\n
-                  interval: "daily"\n
-                  \n
-              - package-ecosystem: "github-actions"\n
-                directory: "/.github/**/*"\n
-                schedule:\n
-                  interval: "daily"\n
-                  \n
+        run: |
+          echo '---' >> .github/dependabot.template.yaml
+          yq "{"version": 2,
+          "updates": [
+              {
+                  "package-ecosystem": "terraform",
+                  "directory": "/**/*",
+                  "schedule": {
+                      "interval": "daily"
+                  }
+              },
+              {
+                  "package-ecosystem": "gomod",
+                  "directory": "/test/**/*",
+                  "schedule": {
+                      "interval": "daily"
+                  }
+              },
+              {
+                  "package-ecosystem": "github-actions",
+                  "directory": "/.github/**/*",
+                  "schedule": {
+                      "interval": "daily"
+                  }
+              }
+          ]}" -oy >> .github/dependabot.template.yaml
 
       - name: Testing
         run: cat .github/dependabot.template.yml
