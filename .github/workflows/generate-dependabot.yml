@@ -36,15 +36,11 @@ jobs:
       #     ls -laR
       #     cat .github/dependabot.template.yml
 
-      - name: Get path
-        id: get-path
-        uses: michmich112/get-actions-dir-path@main
-      - name: Display result
-        run: |
-          echo "path -> $DIRPATH"
-        env:
-          DIRPATH: ${{ steps.get-path.outputs.dir-path }}
+      - name: test print
+        run: echo "Zizek and Danny loves $GITHUB_ACTION_PATH"
 
+      - name: listing files
+        run: cd .github && ls -la
 
       # - name: Generate Dependabot Glob
       #   uses: Makeshift/generate-dependabot-glob-action@v1.2.1
