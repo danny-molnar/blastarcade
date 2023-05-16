@@ -28,9 +28,17 @@ jobs:
         if: steps.check_files.outputs.files_exists == 'false'
         env:
           FILE_NAME: '.github/dependabot.template.yml'
-          FILE_DATA: |
-              This is a long string
-                Many lines bla bla bla
+          FILE_DATA: >-
+            Several lines of text,\n
+            with some "quotes" of various 'types',\n
+            and also a blank line:\n
+            \n
+            and some text with\n
+              extra indentation\n
+            on the next line,\n
+            plus another line at the end.\n
+            \n
+            \n
 
       - name: Testing
         run: cat .github/dependabot.template.yml
