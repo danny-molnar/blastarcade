@@ -28,12 +28,10 @@ jobs:
         if: steps.check_files.outputs.files_exists == 'false'
         env:
           FILE_NAME: '.github/dependabot.template.yml'
-          FILE_DATA: $env:TEMPLATE_FILE_CONTENTS
+          FILE_DATA: '$env:TEMPLATE_FILE_CONTENTS'
 
       - name: Testing
-        run: |
-          ls -laR
-          cat .github/dependabot.template.yml
+        run: cat .github/dependabot.template.yml
 
       # - name: Generate Dependabot Glob
       #   uses: Makeshift/generate-dependabot-glob-action@v1.2.1
