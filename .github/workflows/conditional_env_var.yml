@@ -1,0 +1,13 @@
+---
+name: Generate dependabot.yml
+
+on:
+  workflow_call:
+
+jobs:
+  test-env-vars:
+    name: Test environment variables
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: echo Hello world!
