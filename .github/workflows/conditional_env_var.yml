@@ -19,10 +19,11 @@ jobs:
     steps:
       - name: Test
         run: echo We ignore the example directory
+
   test-env-vars-if-ignore-false:
     name: Test environment variables
     if: ${{ !inputs.IGNORE_EXAMPLE_DIRECTORY }}
     runs-on: ubuntu-latest
     steps:
-    - name: Test
-      run: echo We don't ignore the example directory
+      - name: Test
+        run: echo We don't ignore the example directory
