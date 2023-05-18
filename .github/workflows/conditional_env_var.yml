@@ -1,8 +1,15 @@
 ---
-name: Generate dependabot.yml
+name: Testing conditional environment variables
 
 on:
   workflow_call:
+    inputs:
+      IGNORE_EXAMPLE_DIRECTORY:
+        description: 'Flag to set to ignore example directory'
+        required: false
+        type: boolean
+        default: false
+
 
 jobs:
   test-env-vars:
@@ -10,4 +17,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        run: echo Hello world!
+        run: echo ${{ inputs.IGNORE_EXAMPLE_DIRECTORY }}
