@@ -12,14 +12,17 @@ on:
 
 
 jobs:
-  test-env-vars:
+  test-env-vars-if-ignore-true:
     name: Test environment variables
+    if: ${{ inputs.IGNORE_EXAMPLE_DIRECTORY }}
     runs-on: ubuntu-latest
-    env:
-        if ${{ inputs.IGNORE_EXAMPLE_DIRECTORY }}:
-          EXCLUDE_REGEX = .*example.*
-        if ${{ !inputs.IGNORE_EXAMPLE_DIRECTORY }}:
-          EXCLUDE_REGEX = none
     steps:
       - name: Test
-        run: echo ${{ test-env-vars.env.EXCLUDE_REGEX }}
+        run: echo We ignore the example directory
+  test-env-vars-if-ignore-false:
+    name: Test environment variables
+    if: ${{ !inputs.IGNORE_EXAMPLE_DIRECTORY }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test
+      run: echo We don't ignore the example directory
