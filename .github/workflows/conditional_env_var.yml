@@ -15,6 +15,11 @@ jobs:
   test-env-vars:
     name: Test environment variables
     runs-on: ubuntu-latest
+    env:
+        if ${{ inputs.IGNORE_EXAMPLE_DIRECTORY }}:
+          EXCLUDE_REGEX = .*example.*
+        if ${{ !inputs.IGNORE_EXAMPLE_DIRECTORY }}:
+          EXCLUDE_REGEX = none
     steps:
       - name: Test
-        run: echo ${{ inputs.IGNORE_EXAMPLE_DIRECTORY }}
+        run: echo ${{ env.EXCLUDE_REGEX }}
