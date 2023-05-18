@@ -26,4 +26,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        run: echo We don't ignore the example directory
+        run: echo We do not ignore the example directory
