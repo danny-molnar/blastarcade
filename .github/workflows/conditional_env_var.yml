@@ -22,4 +22,4 @@ jobs:
           EXCLUDE_REGEX = none
     steps:
       - name: Test
-        run: echo ${{ env.EXCLUDE_REGEX }}
+        run: echo ${{ test-env-vars.env.EXCLUDE_REGEX }}
