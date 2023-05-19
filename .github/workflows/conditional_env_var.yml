@@ -11,7 +11,7 @@ on:
         default: false
 
 env:
-  VALUE: ${{ fromJSON('["none", ".*example.*"]')[!inputs.IGNORE_EXAMPLE] }}
+  SLINT_REGEX: ${{ fromJSON('["none", ".*example.*"]')[inputs.IGNORE_EXAMPLE] }}
 
 jobs:
   test-env-vars:
@@ -19,4 +19,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        run: echo ${{ env.VALUE }}
+        run: echo ${{ env.SLINT_REGEX }}
