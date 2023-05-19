@@ -4,26 +4,17 @@ name: Testing conditional environment variables
 on:
   workflow_call:
     inputs:
-      IGNORE_EXAMPLE_DIRECTORY:
-        description: 'Flag to set to ignore example directory'
+     IGNORE_REGEX:
+        description: 'Regex string for superlinter to exclude'
         required: false
-        type: boolean
-        default: false
+        type: string
+        default: 'none'
 
 
 jobs:
-  test-env-vars-if-ignore-true:
+  test-env-vars:
     name: Test environment variables
-    if: ${{ inputs.IGNORE_EXAMPLE_DIRECTORY }}
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        run: echo We ignore the example directory
-
-  test-env-vars-if-ignore-false:
-    name: Test environment variables
-    if: ${{ !inputs.IGNORE_EXAMPLE_DIRECTORY }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Test
-        run: echo We do not ignore the example directory
+        run: echo ${{ inputs.IGNORE_REGEX }}
