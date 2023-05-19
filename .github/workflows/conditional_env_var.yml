@@ -17,14 +17,14 @@ on:
 
 jobs:
   test-env-vars-bool:
-    name: Test environment variables
+    name: Test environment variables - bool
     runs-on: ubuntu-latest
     steps:
       - name: Test
         run: echo ${{ fromJSON('["none", ".*example.*"]')[inputs.IGNORE_EXAMPLE] }}
 
   test-env-vars-string:
-    name: Test environment variables
+    name: Test environment variables - string
     runs-on: ubuntu-latest
     steps:
       - name: Test
