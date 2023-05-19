@@ -4,12 +4,14 @@ name: Testing conditional environment variables
 on:
   workflow_call:
     inputs:
-     IGNORE_REGEX:
-        description: 'Regex string for superlinter to exclude'
+     IGNORE_EXAMPLE:
+        description: 'Are we ignoring?'
         required: false
-        type: string
-        default: 'none'
+        type: boolean
+        default: false
 
+env:
+  VALUE =  ${{ fromJSON('["none", ".*example.*"]')[inputs.IGNORE_EXAMPLE] }}
 
 jobs:
   test-env-vars:
@@ -17,4 +19,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        run: echo ${{ inputs.IGNORE_REGEX }}
+        run: echo ${{ env.VALUE }}
