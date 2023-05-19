@@ -4,19 +4,28 @@ name: Testing conditional environment variables
 on:
   workflow_call:
     inputs:
-     IGNORE_EXAMPLE:
+      IGNORE_EXAMPLE:
         description: 'Are we ignoring?'
         required: false
         type: boolean
         default: false
-
-env:
-  SLINT_REGEX: ${{ fromJSON('["none", ".*example.*"]')[inputs.IGNORE_EXAMPLE] }}
+      IGNORE_REGEXP:
+        description: 'What are we ignoring?'
+        required: false
+        type: string
+        default: 'none'
 
 jobs:
-  test-env-vars:
+  test-env-vars-bool:
     name: Test environment variables
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        run: echo ${{ env.SLINT_REGEX }}
+        run: echo ${{ fromJSON('["none", ".*example.*"]')[inputs.IGNORE_EXAMPLE] }}
+
+  test-env-vars-string:
+    name: Test environment variables
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: echo ${{ inputs.IGNORE_REGEXP }}
