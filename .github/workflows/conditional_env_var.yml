@@ -11,7 +11,7 @@ on:
         default: false
 
 env:
-  VALUE =  ${{ fromJSON('["none", ".*example.*"]')[inputs.IGNORE_EXAMPLE] }}
+  VALUE =  ${{ fromJSON('["none", ".*example.*"]')[!inputs.IGNORE_EXAMPLE] }}
 
 jobs:
   test-env-vars:
