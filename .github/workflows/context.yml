@@ -1,0 +1,13 @@
+---
+    name: Testing context information
+
+    on:
+      workflow_call:
+
+    jobs:
+      context-test:
+        name: Test context information
+        runs-on: ubuntu-latest
+        steps:
+          - name: Test
+            run: echo Bloop
