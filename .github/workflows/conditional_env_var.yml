@@ -29,3 +29,10 @@ jobs:
     steps:
       - name: Test
         run: echo ${{ inputs.IGNORE_REGEXP }}
+
+  lint:
+    name: Super-Linter
+    uses: github/super-linter/slim@v4
+    env:
+      VALIDATE_ALL_CODEBASE: false
+      IGNORE_GENERATED_FILES: true
