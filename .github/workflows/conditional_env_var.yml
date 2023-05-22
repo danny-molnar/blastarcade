@@ -13,7 +13,7 @@ on:
         description: 'What are we ignoring?'
         required: false
         type: string
-        default: 'none'
+        default: ''
 
 jobs:
   test-env-vars-bool:
