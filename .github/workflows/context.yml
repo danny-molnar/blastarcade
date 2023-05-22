@@ -10,4 +10,4 @@
         runs-on: ubuntu-latest
         steps:
           - name: Test
-            run: echo Bloop
+            run: echo ${{ github.event }}
