@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        run: echo ${{ fromJSON('["none", ".*example.*"]')[inputs.IGNORE_EXAMPLE] }}
+        run: echo ${{ fromJSON('["", ".*example.*"]')[inputs.IGNORE_EXAMPLE] }}
 
   test-env-vars-string:
     name: Test environment variables - string
