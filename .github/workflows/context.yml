@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print event info
-        run: echo ${{ toJson(github.event.repository) }}
+        run: echo toJson(github.event.repository)
 
       - name: Print workflow info
-        run: echo ${{ toJson(github.event.workflow) }}
+        run: echo toJson(github.event.workflow)
