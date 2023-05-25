@@ -35,5 +35,5 @@ jobs:
         run: echo PR
 
       - name: Stack Push to Main
-        if: ${{ contains((github.event.workflow), 'pull_request.yml') }}
+        if: ${{ contains((github.event.workflow), 'push_main.yml') }}
         run: echo Push to Main
