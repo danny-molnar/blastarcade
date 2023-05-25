@@ -40,10 +40,10 @@ jobs:
 
   stacks-pr:
     name: Stack PR
-    if: ${{ contains((github.event.workflow), 'pull.request.yml') }}
+    if: ${{ contains((github.event.workflow), 'pull_request.yml') }}
     uses: "danny-molnar/blastarcade/.github/workflows/stack-pull_request.yml@main"
 
   stacks-push-main:
     name: Stack Push Main
-    if: ${{ contains((github.event.workflow), 'push.main.yml') }}
+    if: ${{ contains((github.event.workflow), 'push_main.yml') }}
     uses: "danny-molnar/blastarcade/.github/workflows/stack-push_main.yml@main"
