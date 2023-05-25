@@ -18,5 +18,5 @@ jobs:
         run: echo Downstream repo is NOT a template
 
       - name: Testing value of workflow
-        if: ${{ contains(fromJson(github.event.workflow), 'context_downstream.yml') }}
+        if: ${{ contains((github.event.workflow), 'context_downstream.yml') }}
         run: echo Yay
