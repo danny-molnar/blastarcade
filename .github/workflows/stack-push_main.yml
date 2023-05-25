@@ -4,21 +4,16 @@ on:
   workflow_call:
 
 jobs:
-    test:
-      runs-on: ubuntu-latest
-      steps:
-        - name: test
-          run: echo It works
-#   first-job:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Check if repo is template
-#         if: ${{ contains(github.event.repository.is_template, true) }}
-#         run: echo Repo is template
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if repo is template
+        if: ${{ contains(github.event.repository.is_template, true) }}
+        run: echo Repo is template
 
-#       - name: Check if repo is not template
-#         if: ${{ contains(github.event.repository.is_template, false) }}
-#         run: echo Repo NOT template
+      - name: Check if repo is not template
+        if: ${{ contains(github.event.repository.is_template, false) }}
+        run: echo Repo NOT template
 
-#       - name: dump context
-#         run: echo ${{ github.event }}
+      - name: dump context
+        run: echo ${{ github.event }}
