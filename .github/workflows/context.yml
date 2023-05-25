@@ -9,8 +9,13 @@ jobs:
     name: Test context information
     runs-on: ubuntu-latest
     steps:
-      - name: Print event info
-        run: echo toJson(github.event.repository)
+      - name: Print if repo is template
+        if: ${{ contains(github.event.repository.is_template, true) }}
+        run: echo Downstream repo is template
+
+      - name: Print if repo is not a template
+        if: ${{ contains(github.event.repository.is_template, false) }}
+        run: echo Downstream repo is NOT a template
 
       - name: Print workflow info
         run: echo toJson(github.event.workflow)
