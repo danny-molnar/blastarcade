@@ -18,5 +18,5 @@ jobs:
         run: echo Downstream repo is NOT a template
 
       - name: Print event context
-        run: echo ${{ fromJson(github.event) }}
+        run: echo ${{ toJson(github.event) }}
         # run: echo ${{ contains(fromJson(github.event.workflow), 'context.yml') }}
