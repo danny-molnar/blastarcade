@@ -5,22 +5,35 @@ on:
   workflow_call:
 
 jobs:
-  context-test:
-    name: Test context information
+  # context-test:
+  #   name: Test context information
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Print if repo is template
+  #       if: ${{ contains(github.event.repository.is_template, true) }}
+  #       run: echo Downstream repo is template
+
+  #     - name: Print if repo is not a template
+  #       if: ${{ contains(github.event.repository.is_template, false) }}
+  #       run: echo Downstream repo is NOT a template
+
+  #     - name: Testing value of workflow
+  #       if: ${{ contains((github.event.workflow), 'context_downstream.yml') }}
+  #       run: echo Yay
+
+  #     - name: Testing composite condition
+  #       if: ${{ contains((github.event.workflow), 'context_downstream.yml') }} && ${{ contains(github.event.repository.is_template, false) }}
+  #       run: echo Big YAY
+
+  stacks-branching:
+    name: Branching off into separate other workflows
     runs-on: ubuntu-latest
     steps:
-      - name: Print if repo is template
-        if: ${{ contains(github.event.repository.is_template, true) }}
-        run: echo Downstream repo is template
 
-      - name: Print if repo is not a template
-        if: ${{ contains(github.event.repository.is_template, false) }}
-        run: echo Downstream repo is NOT a template
+      - name: Stack PR
+        if: ${{ contains((github.event.workflow), 'pull_request.yml') }}
+        run: echo PR
 
-      - name: Testing value of workflow
-        if: ${{ contains((github.event.workflow), 'context_downstream.yml') }}
-        run: echo Yay
-
-      - name: Testing composite condition
-        if: ${{ contains((github.event.workflow), 'context_downstream.yml') }} && ${{ contains(github.event.repository.is_template, false) }}
-        run: echo Big YAY
+      - name: Stack Push to Main
+        if: ${{ contains((github.event.workflow), 'pull_request.yml') }}
+        run: echo Push to Main
