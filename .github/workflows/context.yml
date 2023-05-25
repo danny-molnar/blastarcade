@@ -20,3 +20,7 @@ jobs:
       - name: Testing value of workflow
         if: ${{ contains((github.event.workflow), 'context_downstream.yml') }}
         run: echo Yay
+
+      - name: Testing composite condition
+        if: ${{ contains((github.event.workflow), 'context_downstream.yml') }} && ${{ contains(github.event.repository.is_template, false) }}
+        run: echo Big YAY
