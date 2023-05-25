@@ -17,6 +17,6 @@ jobs:
         if: ${{ contains(github.event.repository.is_template, false) }}
         run: echo Downstream repo is NOT a template
 
-      - name: Print event context
-        run: echo ${{ toJson(github.event) }}
-        # run: echo ${{ contains(fromJson(github.event.workflow), 'context.yml') }}
+      - name: Testing value of workflow
+        if: ${{ contains(fromJson(github.event.workflow), 'context_downstream.yml') }}
+        run: echo Yay
