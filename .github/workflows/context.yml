@@ -25,15 +25,25 @@ jobs:
   #       if: ${{ contains((github.event.workflow), 'context_downstream.yml') }} && ${{ contains(github.event.repository.is_template, false) }}
   #       run: echo Big YAY
 
-  stacks-branching:
-    name: Branching off into separate other workflows
-    runs-on: ubuntu-latest
-    steps:
+  # stacks-branching:
+  #   name: Branching off into separate other workflows
+  #   runs-on: ubuntu-latest
+  #   steps:
 
-      - name: Stack PR
-        if: ${{ contains((github.event.workflow), 'pull_request.yml') }}
-        run: echo PR
+  #     - name: Stack PR
+  #       if: ${{ contains((github.event.workflow), 'pull_request.yml') }}
+  #       run: echo PR
 
-      - name: Stack Push to Main
-        if: ${{ contains((github.event.workflow), 'push_main.yml') }}
-        run: echo Push to Main
+  #     - name: Stack Push to Main
+  #       if: ${{ contains((github.event.workflow), 'push_main.yml') }}
+  #       run: echo Push to Main
+
+  stacks-pr:
+    name: Stack PR
+    if: ${{ contains((github.event.workflow), 'pull.request.yml') }}
+    uses: "danny-molnar/blastarcade/.github/workflows/stack-pull_request.yml@main"
+
+  stacks-push-main:
+    name: Stack Push Main
+    if: ${{ contains((github.event.workflow), 'push.main.yml') }}
+    uses: "danny-molnar/blastarcade/.github/workflows/stack-push_main.yml@main"

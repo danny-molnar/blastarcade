@@ -1,0 +1,19 @@
+name: Stack PR
+
+on:
+  workflow_call:
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if repo is template
+        if: ${{ contains(github.event.repository.is_template, true) }}
+        run: echo Repo is template
+
+      - name: Check if repo is not template
+        if: ${{ contains(github.event.repository.is_template, false) }}
+        run: echo Repo NOT template
+
+      - name: dump context
+        run: echo ${{ github.event }}
