@@ -33,11 +33,10 @@
           - name: Check if we have Jinja2 installed
             run: pip list | grep Jinja2
 
-          - name: Install Jinja2-cli
-            run: pip install jinja2-cli
-
-          - name: Using jinja2-cli
-            run: echo Yay
+          - name: Pythoning around
+            shell: python -u {0}
+            run: |
+              print("Hello from the Python shell")
 
 
         #   - name: Jinja action
