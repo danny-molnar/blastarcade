@@ -38,12 +38,12 @@ jobs:
                   interval: 'daily'
 
               - package-ecosystem: 'gomod'
-                directory: '/test/**/*'
+                directory: '/**/*'
                 schedule:
                   interval: 'daily'
 
               - package-ecosystem: 'github-actions'
-                directory: '/.github/workflows/**/*'
+                directory: '/**/*'
                 schedule:
                   interval: 'daily'
 
