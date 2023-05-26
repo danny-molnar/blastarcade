@@ -35,7 +35,7 @@
               print(variable)
               print("------")
               import os
-              os.listdir()
+              print(os.listdir())
 
         #   - name: Jinja action
         #     uses: cuchi/jinja2-action@v1.2.0
