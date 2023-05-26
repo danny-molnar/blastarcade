@@ -36,7 +36,7 @@
               print(variable)
               print(type(variable))
               print(json.dumps(variable.split(","))
-              print(type(json.dumps(variable.split(",")))
+              print(type(json.dumps(variable.split(","))))
 
         #   - name: Jinja action
         #     uses: cuchi/jinja2-action@v1.2.0
