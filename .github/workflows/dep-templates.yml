@@ -30,17 +30,21 @@
           - name: Test
             run: echo ${{ inputs. LIST_OF_PACKAGES }}
 
-          - name: Jinja action
-            uses: cuchi/jinja2-action@v1.2.0
-            with:
-              template: .github/dependabot.template.j2
-              output_file: .github/dependabot.output.yml
-            #   strict: true
-            env:
-              packages: ${{ inputs.LIST_OF_PACKAGES }}
+          - name: Check if we have Jinja2 installed
+            run: pip list | grep Jinja2
 
-          - name: Test print
-            run: cat dependabot.output.yml
+
+        #   - name: Jinja action
+        #     uses: cuchi/jinja2-action@v1.2.0
+        #     with:
+        #       template: .github/dependabot.template.j2
+        #       output_file: .github/dependabot.output.yml
+        #     #   strict: true
+        #     env:
+        #       packages: ${{ inputs.LIST_OF_PACKAGES }}
+
+        #   - name: Test print
+        #     run: cat dependabot.output.yml
 
 
         #   - name: Testing
