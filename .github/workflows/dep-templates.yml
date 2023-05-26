@@ -8,7 +8,7 @@
             description: 'List of dependency packages for template generation'
             required: false
             type: string
-            default: '["terraform", "gomod"]'
+            default: 'gomod, terraform'
 
 
     jobs:
@@ -31,7 +31,7 @@
             shell: python -u {0}
             run: |
               print("Hello from the Python shell")
-              variable = '${{ toJson(inputs.LIST_OF_PACKAGES) }}'
+              variable = '${{ inputs.LIST_OF_PACKAGES }}'
               print(variable)
               print("------")
               import os
