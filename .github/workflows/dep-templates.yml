@@ -26,7 +26,19 @@
         #       files: '.github/dependabot.template.yml'
 
           - name: Test
-            run: echo ${{ fromJson(inputs. LIST_OF_PACKAGES) }}
+            run: echo ${{ inputs. LIST_OF_PACKAGES }}
+
+          - name: Jinja action
+            uses: cuchi/jinja2-action@v1.2.0
+            with:
+              template: dependabot.template.j2
+              output_file: dependatbot.output.yml
+              strict: true
+            env:
+              packages: ${{ inputs.LIST_OF_PACKAGES }}
+
+          - name: Test print
+            run: cat dependabot.output.yml
 
 
         #   - name: Testing
