@@ -35,7 +35,7 @@
               variable = '${{ inputs.LIST_OF_PACKAGES }}'
               print(variable)
               print(type(variable))
-              print(json.dumps(variable.split(","))
+              print(json.dumps(variable.split(",")))
               print(type(json.dumps(variable.split(","))))
 
         #   - name: Jinja action
