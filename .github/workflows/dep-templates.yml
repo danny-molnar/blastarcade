@@ -33,9 +33,7 @@
               print("Hello from the Python shell")
               variable = '${{ inputs.LIST_OF_PACKAGES }}'
               print(variable)
-              print("------")
-              import os
-              print(os.listdir())
+              print(type(variable))
               import json
               print(type(json.dumps(variable)))
 
