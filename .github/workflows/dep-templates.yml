@@ -31,9 +31,15 @@
             shell: python -u {0}
             run: |
               import json
+              from jinja2 import Environment, FileSystemLoader
               print("Hello from the Python shell")
               variable = '${{ inputs.LIST_OF_PACKAGES }}'
               print(variable)
+              environment = Environment(loader=FileSystemLoader(".github/"))
+              template = environment.get_template("dependabot.template.j2")
+
+              content = template.render(variable)
+              print(content)
 
         #   - name: Jinja action
         #     uses: cuchi/jinja2-action@v1.2.0

@@ -1,9 +1,11 @@
 ---
 version: 2
 updates:
-{% for package in packages %}
+{% for item in list %}
+  {% for package, interval in item.items() %}
   - package-ecosystem: {{package}}
     directory: '/**/*'
     schedule:
-      interval: 'daily'
+      interval: {{interval}}
+  {% endfor %}
 {% endfor %}
