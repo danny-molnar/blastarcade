@@ -18,6 +18,8 @@
 
           - name: Checkout Codebase
             uses: actions/checkout@v3
+            with:
+              fetch-depth: 0
 
         #   - name: Check if Template File Exists
         #     id: check_files
@@ -31,9 +33,9 @@
           - name: Jinja action
             uses: cuchi/jinja2-action@v1.2.0
             with:
-              template: dependabot.template.j2
-              output_file: dependatbot.output.yml
-              strict: true
+              template: .github/dependabot.template.j2
+              output_file: .github/dependabot.output.yml
+            #   strict: true
             env:
               packages: ${{ inputs.LIST_OF_PACKAGES }}
 
