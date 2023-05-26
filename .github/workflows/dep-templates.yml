@@ -41,6 +41,10 @@
               content = template.render(variable)
               print(content)
 
+        ## TODO
+        # use list of packages instead and convert that to JSON
+        #
+
         #   - name: Jinja action
         #     uses: cuchi/jinja2-action@v1.2.0
         #     with:
