@@ -37,6 +37,7 @@
             shell: python -u {0}
             run: |
               print("Hello from the Python shell")
+              variable = '${{ inputs.LIST_OF_PACKAGES }}'
 
 
         #   - name: Jinja action
