@@ -8,7 +8,7 @@
             description: 'List of dependency packages for template generation'
             required: false
             type: string
-            default: 'terraform, gomod'
+            default: 'terraform, gomod, github-actions'
           SCHEDULE_INTERVAL:
             description: 'Update interval frequency for template generation'
             required: false
@@ -43,12 +43,12 @@
               packages_list = packages_str.split(",")
 
               tmpl_str = """---
-                version: 2
-                updates:{% for item in list %}
-                  - package-ecosystem: {{item}}
-                    directory: '/**/*'
-                    schedule:
-                      interval: {{interval}}{% endfor %}"""
+              version: 2
+              updates:{% for item in list %}
+                - package-ecosystem: {{item}}
+                  directory: '/**/*'
+                  schedule:
+                    interval: {{interval}}{% endfor %}"""
 
               environment = jinja2.Environment()
               template = environment.from_string(tmpl_str)
