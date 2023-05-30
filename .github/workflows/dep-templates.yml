@@ -51,12 +51,10 @@
                 version: 2
                 updates:
                 {% for item in list %}
-                  # {% for package in item.items() %}
                   - package-ecosystem: {{item}}
                     directory: '/**/*'
                     schedule:
                       interval: {{interval}}
-                  # {% endfor %}
                 {% endfor %}
               """
 
