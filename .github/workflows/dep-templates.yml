@@ -10,10 +10,10 @@
             type: string
             default: 'terraform, gomod'
           SCHEDULE_INTERVAL:
-              description: 'Update interval frequency for template generation'
-              required: false
-              type: string
-              default: 'daily'
+            description: 'Update interval frequency for template generation'
+            required: false
+            type: string
+            default: 'daily'
 
 
     jobs:
@@ -43,15 +43,26 @@
               interval_str = '${{ inputs.SCHEDULE_INTERVAL }}'
               print(interval_str)
 
-              # environment = Environment(loader=FileSystemLoader(".github/"))
-              # template = environment.get_template("dependabot.template.j2")
+              # create list from input
+              packages_list = packages_str.split(",")
 
-              # content = template.render(variable)
-              # print(content)
+              tmpl_str = """
+              ---
+                version: 2
+                updates:
+                {% for item in list %}
+                  # {% for package in item.items() %}
+                  - package-ecosystem: {{item}}
+                    directory: '/**/*'
+                    schedule:
+                      interval: {{interval}}
+                  # {% endfor %}
+                {% endfor %}
+              """"
 
-        ## TODO
-        # use list of packages instead and convert that to JSON
-        #
+              environment = jinja2.Environment()
+              template = environment.from_string(tmpl_str)
+              template.render(list=packages_list)
 
         #   - name: Jinja action
         #     uses: cuchi/jinja2-action@v1.2.0
