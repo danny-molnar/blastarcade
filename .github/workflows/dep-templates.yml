@@ -55,14 +55,8 @@
               output_template = template.render(list=packages_list, interval=interval_str)
               print(output_template)
 
-        #   - name: Jinja action
-        #     uses: cuchi/jinja2-action@v1.2.0
-        #     with:
-        #       template: .github/dependabot.template.j2
-        #       output_file: .github/dependabot.output.yml
-        #     #   strict: true
-        #     env:
-        #       packages: ${{ inputs.LIST_OF_PACKAGES }}
+              with open(".github/dependabot.template.yml", "w") as fh:
+                fh.write(output_template)
 
         #   - name: Test print
         #     run: cat dependabot.output.yml
