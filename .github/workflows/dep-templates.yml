@@ -61,7 +61,7 @@
               environment = jinja2.Environment()
               template = environment.from_string(tmpl_str)
               template.render(list=packages_list)
-              print(template_render)
+              print(template.render)
 
         #   - name: Jinja action
         #     uses: cuchi/jinja2-action@v1.2.0
