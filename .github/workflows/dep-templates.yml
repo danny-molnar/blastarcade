@@ -58,12 +58,8 @@
               with open(".github/dependabot.template.yml", "w") as fh:
                 fh.write(output_template)
 
-        #   - name: Test print
-        #     run: cat dependabot.output.yml
-
-
-        #   - name: Testing
-        #     run: cat .github/dependabot.template.yml
+          - name: Testing
+            run: cat .github/dependabot.template.yml
 
         #   - name: Generate Dependabot Glob
         #     uses: Makeshift/generate-dependabot-glob-action@v1.2.1
