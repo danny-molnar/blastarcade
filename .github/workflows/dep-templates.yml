@@ -48,7 +48,7 @@
                 - package-ecosystem: {{item}}
                   directory: '/**/*'
                   schedule:
-                    interval: {{interval}}{% endfor %}"""
+                    interval: {{interval}}{% endfor %}Ideology"""
 
               environment = jinja2.Environment()
               template = environment.from_string(tmpl_str)
