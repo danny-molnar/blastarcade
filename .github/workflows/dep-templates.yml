@@ -35,7 +35,7 @@
           - name: Pythoning around
             shell: python -u {0}
             run: |
-              import json
+              import json, jinja2
               from jinja2 import Environment, FileSystemLoader
               print("Hello from the Python shell")
               packages_str = '${{ inputs.LIST_OF_PACKAGES }}'
