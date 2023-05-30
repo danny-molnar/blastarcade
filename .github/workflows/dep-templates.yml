@@ -8,7 +8,7 @@
             description: 'List of dependency packages for template generation'
             required: false
             type: string
-            default: '[{"package":"terraform","interval":"daily"},{"package":"gomod","interval":"daily"}]'
+            default: 'terraform, gomod'
 
 
     jobs:
@@ -35,11 +35,12 @@
               print("Hello from the Python shell")
               variable = '${{ inputs.LIST_OF_PACKAGES }}'
               print(variable)
-              environment = Environment(loader=FileSystemLoader(".github/"))
-              template = environment.get_template("dependabot.template.j2")
 
-              content = template.render(variable)
-              print(content)
+              # environment = Environment(loader=FileSystemLoader(".github/"))
+              # template = environment.get_template("dependabot.template.j2")
+
+              # content = template.render(variable)
+              # print(content)
 
         ## TODO
         # use list of packages instead and convert that to JSON
