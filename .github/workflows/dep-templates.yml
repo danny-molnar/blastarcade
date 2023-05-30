@@ -58,7 +58,7 @@
                       interval: {{interval}}
                   # {% endfor %}
                 {% endfor %}
-              """"
+              """
 
               environment = jinja2.Environment()
               template = environment.from_string(tmpl_str)
