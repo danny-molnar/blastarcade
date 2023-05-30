@@ -48,7 +48,7 @@
                 - package-ecosystem: {{item}}
                   directory: '/**/*'
                   schedule:
-                    interval: {{interval}}{% endfor %}Ideology"""
+                    interval: {{interval}}{% endfor %}"""
 
               environment = jinja2.Environment()
               template = environment.from_string(tmpl_str)
@@ -58,14 +58,11 @@
               with open(".github/dependabot.template.yml", "w") as fh:
                 fh.write(output_template)
 
-          - name: Testing
-            run: cat .github/dependabot.template.yml
+          - name: Generate Dependabot Glob
+            uses: Makeshift/generate-dependabot-glob-action@v1.2.1
 
-        #   - name: Generate Dependabot Glob
-        #     uses: Makeshift/generate-dependabot-glob-action@v1.2.1
-
-        #   - name: Add and Commit
-        #     uses: EndBug/add-and-commit@v9.1.2
-        #     with:
-        #       add: '.github/dependabot.yml'
-        #       default_author: github_actions
+          - name: Add and Commit
+            uses: EndBug/add-and-commit@v9.1.2
+            with:
+              add: '.github/dependabot.yml'
+              default_author: github_actions
