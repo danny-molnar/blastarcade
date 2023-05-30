@@ -39,7 +39,7 @@
               from jinja2 import Environment, FileSystemLoader
               print("Hello from the Python shell")
               packages_str = '${{ inputs.LIST_OF_PACKAGES }}'
-              print(variable_str)
+              print(packages_str)
               interval_str = '${{ inputs.SCHEDULE_INTERVAL }}'
               print(interval_str)
 
