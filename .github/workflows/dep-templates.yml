@@ -9,6 +9,11 @@
             required: false
             type: string
             default: 'terraform, gomod'
+          SCHEDULE_INTERVAL:
+              description: 'Update interval frequency for template generation'
+              required: false
+              type: string
+              default: 'daily'
 
 
     jobs:
@@ -33,8 +38,10 @@
               import json
               from jinja2 import Environment, FileSystemLoader
               print("Hello from the Python shell")
-              variable = '${{ inputs.LIST_OF_PACKAGES }}'
-              print(variable)
+              packages_str = '${{ inputs.LIST_OF_PACKAGES }}'
+              print(variable_str)
+              interval_str = '${{ inputs.SCHEDULE_INTERVAL }}'
+              print(interval_str)
 
               # environment = Environment(loader=FileSystemLoader(".github/"))
               # template = environment.get_template("dependabot.template.j2")
