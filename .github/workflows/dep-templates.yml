@@ -42,17 +42,13 @@
 
               packages_list = packages_str.split(",")
 
-              tmpl_str = """
-              ---
+              tmpl_str = """---
                 version: 2
-                updates:
-                {% for item in list %}
+                updates:{% for item in list %}
                   - package-ecosystem: {{item}}
                     directory: '/**/*'
                     schedule:
-                      interval: {{interval}}
-                {% endfor %}
-              """
+                      interval: {{interval}}{% endfor %}"""
 
               environment = jinja2.Environment()
               template = environment.from_string(tmpl_str)
