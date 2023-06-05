@@ -2,6 +2,7 @@
 name: "Composite action calling other workflows"
 on:
   workflow_call:
+  push:
 
 jobs:
 
@@ -11,3 +12,6 @@ jobs:
   hegel:
     name: Hegel
     uses: danny-molnar/blastarcade/.github/workflows/hegel.yml@main
+  generate-dependabot:
+    name: Generate Dependabot
+    uses: danny-molnar/blastarcade/.github/workflows/generate-dependabot.yml@main
