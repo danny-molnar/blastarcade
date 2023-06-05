@@ -1,0 +1,13 @@
+---
+name: "Composite action calling other workflows"
+on:
+  workflow_call:
+
+jobs:
+
+  ideology:
+    name: Ideology
+    uses: danny-molnar/blastarcade/.github/workflows/ideology.yml@main
+  hegel:
+    name: Hegel
+    uses: danny-molnar/blastarcade/.github/workflows/hegel.yml@main

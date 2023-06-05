@@ -1,0 +1,11 @@
+---
+name: "Ideology"
+on:
+  workflow_call:
+
+jobs:
+  ideology:
+    name: Saying ideology
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Ideology

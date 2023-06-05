@@ -1,0 +1,11 @@
+---
+name: "Hegel"
+on:
+  workflow_call:
+
+jobs:
+  hegel:
+    name: Saying Hegel
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hegel sniff
