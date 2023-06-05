@@ -2,7 +2,6 @@
 name: "Composite action calling other workflows"
 on:
   workflow_call:
-  push:
 
 jobs:
 
