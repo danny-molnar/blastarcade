@@ -1,0 +1,13 @@
+---
+name: Retriggered Workflow demo
+
+on:
+  workflow_call:
+
+jobs:
+  retriggered-job:
+    name: Retriggered Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: dump GH event
+        run: echo ${{ github.event }}
