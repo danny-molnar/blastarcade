@@ -9,5 +9,7 @@ jobs:
     name: Retriggered Job
     runs-on: ubuntu-latest
     steps:
-      - name: dump GH event
-        run: echo ${{ toJson(github.event) }}
+      - name: dump GH context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
